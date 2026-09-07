@@ -6,7 +6,7 @@ import SlideWrapper from './SlideWrapper';
 interface Props { slide: SlideData; }
 
 const layers = [
-  { name: 'Frontend', icon: '🖼️', color: '#79c0ff', desc: 'What users see — buttons, forms, pages', examples: ['Button', 'Form', 'Login page', 'Dashboard', 'Payment screen'] },
+  { name: 'Frontend', icon: '🖼️', color: '#79c0ff', desc: 'What users see - buttons, forms, pages', examples: ['Button', 'Form', 'Login page', 'Dashboard', 'Payment screen'] },
   { name: 'Backend', icon: '⚙️', color: '#58a6ff', desc: 'The logic that processes requests', examples: ['API endpoints', 'Business rules', 'Authentication', 'Data processing'] },
   { name: 'Database', icon: '🗄️', color: '#bc8cff', desc: 'Where data is stored and retrieved', examples: ['User accounts', 'Orders', 'Products', 'Transactions'] },
 ];
@@ -46,7 +46,7 @@ export default function WhatIsCodeSlide({ slide }: Props) {
                   initial={{ scaleY: 0 }}
                   animate={{ scaleY: 1 }}
                   transition={{ delay: i * 0.15 + 0.1 }}
-                  style={{ width: 2, height: 20, background: `linear-gradient(to bottom, ${layer.color}60, ${layers[i+1].color}60)`, transformOrigin: 'top' }}
+                  style={{ width: 2, height: 20, background: `linear-gradient(to bottom, ${layer.color}60, ${layers[i + 1].color}60)`, transformOrigin: 'top' }}
                 />
               )}
             </React.Fragment>

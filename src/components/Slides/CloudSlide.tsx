@@ -18,7 +18,7 @@ export default function CloudSlide({ slide }: Props) {
     <SlideWrapper slide={slide}>
       <h2 style={{ fontSize: 'clamp(20px, 3.5vw, 38px)', fontWeight: 800, color: 'var(--text-primary)', marginBottom: 8 }}>{slide.title}</h2>
       <p style={{ fontSize: 14, color: 'var(--text-secondary)', marginBottom: 32 }}>
-        Cloud providers rent us computers on the internet — no physical hardware ownership needed.
+        Cloud providers rent us computers on the internet - no physical hardware ownership needed.
       </p>
 
       <div style={{ display: 'flex', gap: 40, alignItems: 'flex-start', flexWrap: 'wrap' }}>
@@ -63,7 +63,7 @@ export default function CloudSlide({ slide }: Props) {
               'Pay only for what you use',
               'Scale up or down as needed',
               'Global availability and redundancy',
-              'Managed infrastructure — no data centre needed',
+              'Managed infrastructure - no data centre needed',
             ].map((item, i) => (
               <motion.div key={item} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: i * 0.1 + 0.5 }} style={{ display: 'flex', gap: 8, marginBottom: 8 }}>
                 <span style={{ color: 'var(--success)', flexShrink: 0 }}>✓</span>
@@ -74,7 +74,7 @@ export default function CloudSlide({ slide }: Props) {
 
           <div style={{ background: 'var(--warning-dim)', border: '1px solid rgba(210,153,34,0.3)', borderRadius: 10, padding: '12px 16px' }}>
             <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--warning)', marginBottom: 6 }}>Out of scope today</div>
-            <div style={{ fontSize: 12, color: 'var(--text-muted)', lineHeight: 1.5 }}>VPC internals, IAM policies, subnets, autoscaling, advanced networking — these are future topics.</div>
+            <div style={{ fontSize: 12, color: 'var(--text-muted)', lineHeight: 1.5 }}>VPC internals, IAM policies, subnets, autoscaling, advanced networking - these are future topics.</div>
           </div>
         </div>
       </div>

@@ -31,7 +31,7 @@ const envs = [
     label: 'STAGING',
     icon: '🎭',
     color: '#bc8cff',
-    desc: 'A realistic copy of production — final verification before go-live.',
+    desc: 'A realistic copy of production - final verification before go-live.',
     who: 'QA, Product, Stakeholders',
     goal: 'Final sign-off in a production-like environment',
     risk: 'No real users, but realistic data',

@@ -10,7 +10,7 @@ const scenarios = [
     id: 'no-open',
     label: '🔴 Website doesn\'t open',
     firstLook: 'DNS / Network / Server',
-    why: 'The request never reached the server — the problem is before the application.',
+    why: 'The request never reached the server - the problem is before the application.',
     evidence: 'Browser shows "ERR_NAME_NOT_RESOLVED" or connection timeout',
     rootCause: 'DNS misconfiguration, server is down, or firewall blocking traffic',
     nextStep: 'ping domain.com → check DNS records → check server status in cloud console',
@@ -28,7 +28,7 @@ const scenarios = [
     id: 'error-500',
     label: '💥 500 Error',
     firstLook: 'Application Logs',
-    why: '500 means the server crashed processing your request — always check the server-side code.',
+    why: '500 means the server crashed processing your request - always check the server-side code.',
     evidence: 'API returns { "error": "Internal Server Error" }',
     rootCause: 'Unhandled exception, null pointer, failed database query',
     nextStep: 'SSH to server → docker logs <container> → read the stack trace → identify the failing line',
@@ -37,8 +37,8 @@ const scenarios = [
     id: 'error-502',
     label: '🔀 502 Error',
     firstLook: 'Reverse Proxy → Backend Connection',
-    why: '502 Bad Gateway means Nginx received a bad response from the backend — usually the backend is down.',
-    evidence: 'Browser shows "502 Bad Gateway" — Nginx error page',
+    why: '502 Bad Gateway means Nginx received a bad response from the backend - usually the backend is down.',
+    evidence: 'Browser shows "502 Bad Gateway" - Nginx error page',
     rootCause: 'Backend container crashed, wrong port, process not running',
     nextStep: 'docker ps → check container status → docker logs <backend> → restart container if needed',
   },
@@ -46,7 +46,7 @@ const scenarios = [
     id: 'deploy-failed',
     label: '⚙️ Deployment failed',
     firstLook: 'CI/CD Pipeline Logs',
-    why: 'The deployment pipeline stopped before completing — find which stage failed.',
+    why: 'The deployment pipeline stopped before completing - find which stage failed.',
     evidence: 'GitHub Actions / CI dashboard shows red X on the pipeline',
     rootCause: 'Test failure, build error, Docker push failure, or server permission issue',
     nextStep: 'Open CI/CD dashboard → click failed run → read stage output → fix the reported error',
@@ -56,15 +56,15 @@ const scenarios = [
     label: '👻 UI shows old code',
     firstLook: 'Deployment Status → Browser Cache → Build',
     why: 'Either the deployment hasn\'t run yet, the build didn\'t complete, or the browser is caching the old version.',
-    evidence: 'New feature you deployed is not visible — but no error shown',
+    evidence: 'New feature you deployed is not visible - but no error shown',
     rootCause: 'Pipeline not triggered, cache-busting not configured, or CDN not cleared',
-    nextStep: 'Check CI/CD — did deployment succeed? Hard refresh (Ctrl+Shift+R) → check build output → clear CDN if needed',
+    nextStep: 'Check CI/CD - did deployment succeed? Hard refresh (Ctrl+Shift+R) → check build output → clear CDN if needed',
   },
   {
     id: 'db-fail',
     label: '🗄️ Database connection failed',
     firstLook: 'Application Logs → Database',
-    why: 'Application can\'t connect to the database — check credentials, connectivity, and DB health.',
+    why: 'Application can\'t connect to the database - check credentials, connectivity, and DB health.',
     evidence: 'Application logs: "ECONNREFUSED" or "database connection timeout"',
     rootCause: 'DB is down, wrong credentials, connection pool exhausted, firewall rule',
     nextStep: 'docker logs <app> → find DB error → check DB container → verify DB credentials in env config',
@@ -150,7 +150,7 @@ export default function WhereDoILookSlide({ slide }: Props) {
                   </div>
                 ))}
                 <div style={{ fontSize: 10, color: 'var(--text-muted)', fontStyle: 'italic', textAlign: 'center', padding: '4px 0' }}>
-                  ⚠️ Simulated example — not a real live system
+                  ⚠️ Simulated example - not a real live system
                 </div>
               </motion.div>
             ) : (

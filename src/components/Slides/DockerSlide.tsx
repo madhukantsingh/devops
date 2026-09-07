@@ -10,7 +10,7 @@ export default function DockerSlide({ slide }: Props) {
     <SlideWrapper slide={slide}>
       <h2 style={{ fontSize: 'clamp(20px, 3.5vw, 38px)', fontWeight: 800, color: 'var(--text-primary)', marginBottom: 8 }}>{slide.title}</h2>
       <p style={{ fontSize: 15, color: 'var(--text-secondary)', marginBottom: 28 }}>
-        Docker packages your application with everything it needs to run — making it portable and predictable.
+        Docker packages your application with everything it needs to run - making it portable and predictable.
       </p>
 
       <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap', alignItems: 'flex-start' }}>

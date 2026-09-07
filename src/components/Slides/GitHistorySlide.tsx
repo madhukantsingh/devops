@@ -78,9 +78,9 @@ const concepts = [
     color: '#58a6ff',
     body: `Git has three zones:
 
-1. Working Directory — your files on disk, as you edit them
-2. Staging Area (Index) — a "pre-commit" holding area you populate with git add
-3. Local Repository — permanent commits stored in .git/
+1. Working Directory - your files on disk, as you edit them
+2. Staging Area (Index) - a "pre-commit" holding area you populate with git add
+3. Local Repository - permanent commits stored in .git/
 
 The flow is:
   edit file  →  git add file  →  git commit -m "message"
@@ -151,21 +151,21 @@ You resolve it by:
   3. Removing the conflict markers
   4. Running git add + git commit
 
-Conflicts are normal — not a mistake. They happen when teams work in parallel.`,
+Conflicts are normal - not a mistake. They happen when teams work in parallel.`,
     code: '# After resolving conflict markers in the file:\ngit add LoginPage.tsx\ngit commit -m "Merge: resolve email validation conflict"',
   },
 ];
 
 // ── Tab: branches visual ──────────────────────────────────────────────────
 const branchDiagram = [
-  { step: 1, branch: 'main',                label: 'main: Initial setup',          x: 0, y: 0,   color: '#58a6ff' },
-  { step: 2, branch: 'fix/login-validation', label: 'Branch: fix/login-validation', x: 1, y: 1,  color: '#ffa657' },
-  { step: 3, branch: 'fix/login-validation', label: 'Commit: add validation',       x: 2, y: 1,  color: '#ffa657' },
-  { step: 4, branch: 'feature/remember-me',  label: 'Branch: feature/remember-me', x: 1, y: 2,  color: '#3fb950' },
-  { step: 5, branch: 'feature/remember-me',  label: 'Commit: remember me UI',      x: 2, y: 2,  color: '#3fb950' },
-  { step: 6, branch: 'main',                label: 'Merge fix ← PR approved',      x: 3, y: 0,  color: '#58a6ff' },
-  { step: 7, branch: 'main',                label: 'Merge feature ← PR approved',  x: 4, y: 0,  color: '#58a6ff' },
-  { step: 8, branch: 'main',                label: 'Security patch commit',         x: 5, y: 0,  color: '#bc8cff' },
+  { step: 1, branch: 'main', label: 'main: Initial setup', x: 0, y: 0, color: '#58a6ff' },
+  { step: 2, branch: 'fix/login-validation', label: 'Branch: fix/login-validation', x: 1, y: 1, color: '#ffa657' },
+  { step: 3, branch: 'fix/login-validation', label: 'Commit: add validation', x: 2, y: 1, color: '#ffa657' },
+  { step: 4, branch: 'feature/remember-me', label: 'Branch: feature/remember-me', x: 1, y: 2, color: '#3fb950' },
+  { step: 5, branch: 'feature/remember-me', label: 'Commit: remember me UI', x: 2, y: 2, color: '#3fb950' },
+  { step: 6, branch: 'main', label: 'Merge fix ← PR approved', x: 3, y: 0, color: '#58a6ff' },
+  { step: 7, branch: 'main', label: 'Merge feature ← PR approved', x: 4, y: 0, color: '#58a6ff' },
+  { step: 8, branch: 'main', label: 'Security patch commit', x: 5, y: 0, color: '#bc8cff' },
 ];
 
 type Tab = 'history' | 'branches' | 'concepts';
@@ -191,7 +191,7 @@ export default function GitHistorySlide({ slide }: Props) {
         {slide.title}
       </h2>
       <p style={{ fontSize: 13, color: 'var(--text-secondary)', marginBottom: 16 }}>
-        Git is version control — the complete history of every change your team has ever made.
+        Git is version control - the complete history of every change your team has ever made.
       </p>
 
       {/* Tabs */}
@@ -390,13 +390,13 @@ export default function GitHistorySlide({ slide }: Props) {
 
                 {/* Commit dots */}
                 {[
-                  { cx: 30,  cy: 30, label: 'Initial',     color: '#58a6ff', branch: 'main' },
-                  { cx: 130, cy: 30, label: 'Branches ↓',  color: '#58a6ff', branch: 'main' },
-                  { cx: 200, cy: 55, label: 'Fix commit',   color: '#ffa657', branch: 'fix/' },
-                  { cx: 200, cy: 80, label: 'Feature',      color: '#3fb950', branch: 'feat/' },
-                  { cx: 280, cy: 30, label: 'Fix merged',   color: '#58a6ff', branch: 'main' },
-                  { cx: 390, cy: 30, label: 'Feat merged',  color: '#56d364', branch: 'main' },
-                  { cx: 490, cy: 30, label: 'Security',     color: '#bc8cff', branch: 'main' },
+                  { cx: 30, cy: 30, label: 'Initial', color: '#58a6ff', branch: 'main' },
+                  { cx: 130, cy: 30, label: 'Branches ↓', color: '#58a6ff', branch: 'main' },
+                  { cx: 200, cy: 55, label: 'Fix commit', color: '#ffa657', branch: 'fix/' },
+                  { cx: 200, cy: 80, label: 'Feature', color: '#3fb950', branch: 'feat/' },
+                  { cx: 280, cy: 30, label: 'Fix merged', color: '#58a6ff', branch: 'main' },
+                  { cx: 390, cy: 30, label: 'Feat merged', color: '#56d364', branch: 'main' },
+                  { cx: 490, cy: 30, label: 'Security', color: '#bc8cff', branch: 'main' },
                 ].map((dot, i) => (
                   <g key={i}>
                     <circle cx={dot.cx} cy={dot.cy} r={10} fill={dot.color} fillOpacity="0.2" stroke={dot.color} strokeWidth="2" />
@@ -405,9 +405,9 @@ export default function GitHistorySlide({ slide }: Props) {
                 ))}
 
                 {/* Branch labels */}
-                <text x="10"  y="22"  fontSize="10" fill="#58a6ff" fontWeight="bold" fontFamily="sans-serif">main</text>
-                <text x="155" y="52"  fontSize="10" fill="#ffa657" fontWeight="bold" fontFamily="sans-serif">fix/login</text>
-                <text x="155" y="77"  fontSize="10" fill="#3fb950" fontWeight="bold" fontFamily="sans-serif">feature/remember-me</text>
+                <text x="10" y="22" fontSize="10" fill="#58a6ff" fontWeight="bold" fontFamily="sans-serif">main</text>
+                <text x="155" y="52" fontSize="10" fill="#ffa657" fontWeight="bold" fontFamily="sans-serif">fix/login</text>
+                <text x="155" y="77" fontSize="10" fill="#3fb950" fontWeight="bold" fontFamily="sans-serif">feature/remember-me</text>
               </svg>
             </div>
 

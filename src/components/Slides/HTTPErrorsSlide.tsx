@@ -6,20 +6,20 @@ import SlideWrapper from './SlideWrapper';
 interface Props { slide: SlideData; }
 
 const errors = [
-  { code: 400, name: 'Bad Request', color: '#ffa657', icon: '📝', firstCheck: 'Request payload / parameters', desc: 'The request was malformed — missing required fields, wrong data format, or invalid parameters.', example: 'Missing "email" field in POST /login body' },
-  { code: 401, name: 'Unauthorized', color: '#f85149', icon: '🔑', firstCheck: 'Login / token / session', desc: 'Authentication is required but the user is not authenticated. Token may be missing, expired, or invalid.', example: 'JWT token expired — user needs to log in again' },
+  { code: 400, name: 'Bad Request', color: '#ffa657', icon: '📝', firstCheck: 'Request payload / parameters', desc: 'The request was malformed - missing required fields, wrong data format, or invalid parameters.', example: 'Missing "email" field in POST /login body' },
+  { code: 401, name: 'Unauthorized', color: '#f85149', icon: '🔑', firstCheck: 'Login / token / session', desc: 'Authentication is required but the user is not authenticated. Token may be missing, expired, or invalid.', example: 'JWT token expired - user needs to log in again' },
   { code: 403, name: 'Forbidden', color: '#f85149', icon: '🚫', firstCheck: 'Permissions / roles', desc: 'Authenticated but not allowed. The user is logged in but does not have permission for this resource.', example: 'Regular user trying to access admin dashboard' },
-  { code: 404, name: 'Not Found', color: '#d29922', icon: '🔍', firstCheck: 'URL / route / resource', desc: 'The requested URL or resource does not exist. Could be a wrong URL, deleted resource, or missing route.', example: 'GET /api/v2/users — API v2 does not exist' },
+  { code: 404, name: 'Not Found', color: '#d29922', icon: '🔍', firstCheck: 'URL / route / resource', desc: 'The requested URL or resource does not exist. Could be a wrong URL, deleted resource, or missing route.', example: 'GET /api/v2/users - API v2 does not exist' },
   { code: 429, name: 'Too Many Requests', color: '#d29922', icon: '⏱️', firstCheck: 'Rate limiting', desc: 'Too many requests in a short time window. The server is throttling to protect against abuse.', example: 'Login attempts exceeded: 100 requests in 60 seconds' },
   { code: 500, name: 'Server Error', color: '#f85149', icon: '💥', firstCheck: 'Backend application logs', desc: 'The server encountered an unexpected condition. This is always a server-side bug or configuration issue.', example: 'Unhandled exception in payment processing logic' },
   { code: 502, name: 'Bad Gateway', color: '#f85149', icon: '🔀', firstCheck: 'Reverse proxy ↔ backend connection', desc: 'The proxy received an invalid response from the upstream server. Backend may be down or crashed.', example: 'Nginx can\'t reach the Node.js backend on port 3000' },
-  { code: 503, name: 'Service Unavailable', color: '#f85149', icon: '🔴', firstCheck: 'Application / server health', desc: 'The server is not available — overloaded, in maintenance, or crashed.', example: 'Server out of memory — container restarting' },
+  { code: 503, name: 'Service Unavailable', color: '#f85149', icon: '🔴', firstCheck: 'Application / server health', desc: 'The server is not available - overloaded, in maintenance, or crashed.', example: 'Server out of memory - container restarting' },
   { code: 504, name: 'Gateway Timeout', color: '#f85149', icon: '⏰', firstCheck: 'Slow / unavailable backend', desc: 'The proxy did not receive a response in time from the upstream server.', example: 'Database query taking > 30 seconds to respond' },
 ];
 
 const groups = [
-  { label: '4xx — Client errors', desc: 'Something is wrong with the request', range: [400, 403, 404, 429] },
-  { label: '5xx — Server errors', desc: 'Something went wrong on the server', range: [500, 502, 503, 504] },
+  { label: '4xx - Client errors', desc: 'Something is wrong with the request', range: [400, 403, 404, 429] },
+  { label: '5xx - Server errors', desc: 'Something went wrong on the server', range: [500, 502, 503, 504] },
 ];
 
 export default function HTTPErrorsSlide({ slide }: Props) {
@@ -40,7 +40,7 @@ export default function HTTPErrorsSlide({ slide }: Props) {
           {groups.map((group) => (
             <div key={group.label} style={{ marginBottom: 16 }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-muted)', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 8 }}>
-                {group.label} — <span style={{ color: 'var(--text-muted)', fontWeight: 400 }}>{group.desc}</span>
+                {group.label} - <span style={{ color: 'var(--text-muted)', fontWeight: 400 }}>{group.desc}</span>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: 8 }}>
                 {errors.filter((e) => group.range.includes(e.code)).map((err, i) => {

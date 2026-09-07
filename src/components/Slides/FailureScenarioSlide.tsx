@@ -7,7 +7,7 @@ import { CheckCircle, XCircle, AlertTriangle } from 'lucide-react';
 interface Props { slide: SlideData; }
 
 const choices = [
-  { id: 'frontend', label: 'Change the frontend code', correct: false, why: 'The error 500 always originates from the server — changing frontend code is a guess, not debugging. You would waste time and potentially introduce new bugs.' },
+  { id: 'frontend', label: 'Change the frontend code', correct: false, why: 'The error 500 always originates from the server - changing frontend code is a guess, not debugging. You would waste time and potentially introduce new bugs.' },
   { id: 'restart', label: 'Restart everything randomly', correct: false, why: 'Random restarts without evidence are unprofessional and mask the real problem. Even if it works temporarily, the issue will return.' },
   { id: 'inspect', label: 'Inspect the request and backend logs', correct: true, why: 'The Network tab shows a 500 response. 500 = server-side error. The next step is always: read the backend logs to find the actual error message.' },
 ];
@@ -30,7 +30,7 @@ export default function FailureScenarioSlide({ slide }: Props) {
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
         <AlertTriangle size={18} style={{ color: 'var(--error)' }} />
         <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: 1.5, color: 'var(--error)', textTransform: 'uppercase' }}>Simulated Incident</span>
-        <span style={{ fontSize: 11, color: 'var(--text-muted)', fontStyle: 'italic' }}>— not a real live system</span>
+        <span style={{ fontSize: 11, color: 'var(--text-muted)', fontStyle: 'italic' }}>- not a real live system</span>
       </div>
 
       <h2 style={{ fontSize: 'clamp(18px, 3vw, 30px)', fontWeight: 800, color: 'var(--text-primary)', marginBottom: 16 }}>{slide.title}</h2>

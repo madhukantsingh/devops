@@ -111,7 +111,7 @@ export default function LoginFlowSlide({ slide }: Props) {
                 </div>
                 <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: activeStep.code ? 12 : 0 }}>
                   {activeStep.id === 'response' && failure
-                    ? '500 Internal Server Error — the server encountered an unexpected condition. Check the backend application logs.'
+                    ? '500 Internal Server Error - the server encountered an unexpected condition. Check the backend application logs.'
                     : activeStep.desc}
                 </p>
                 {activeStep.code && (

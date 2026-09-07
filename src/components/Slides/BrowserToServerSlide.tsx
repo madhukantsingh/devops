@@ -9,10 +9,10 @@ const steps = [
   { id: 'browser', label: 'Browser', icon: '🌐', color: '#58a6ff', detail: 'You type a URL or click a link. The browser needs to find the server that hosts this website.' },
   { id: 'domain', label: 'Domain', icon: '🔤', color: '#79c0ff', detail: 'The URL (e.g. myapp.com) is a human-readable name. Computers communicate using IP addresses, not names.' },
   { id: 'dns', label: 'DNS', icon: '📖', color: '#bc8cff', detail: 'DNS (Domain Name System) is like a phone book for the internet. It translates "myapp.com" into an IP address like 142.250.185.14.' },
-  { id: 'ip', label: 'Server IP', icon: '🎯', color: '#ffa657', detail: 'The IP address points to a specific computer on the internet — the server where the application lives.' },
+  { id: 'ip', label: 'Server IP', icon: '🎯', color: '#ffa657', detail: 'The IP address points to a specific computer on the internet - the server where the application lives.' },
   { id: 'nginx', label: 'Nginx / Proxy', icon: '🔀', color: '#f78166', detail: 'A reverse proxy (like Nginx) sits in front of the application. It handles SSL, routes requests to the correct service, and manages load balancing.' },
   { id: 'app', label: 'Application', icon: '⚙️', color: '#56d364', detail: 'The application receives the request, processes it (queries the database, runs logic), and prepares a response.' },
-  { id: 'response', label: 'Response', icon: '📤', color: '#3fb950', detail: 'The application sends the response back — typically HTML, JSON, or a file — through the same chain in reverse.' },
+  { id: 'response', label: 'Response', icon: '📤', color: '#3fb950', detail: 'The application sends the response back - typically HTML, JSON, or a file - through the same chain in reverse.' },
   { id: 'rendered', label: 'Browser renders', icon: '✨', color: '#58a6ff', detail: 'The browser receives the response, renders the HTML/CSS, executes JavaScript, and displays the page to the user.' },
 ];
 

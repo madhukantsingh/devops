@@ -26,9 +26,9 @@ const sections = [
 ];
 
 const modeDescriptions: Record<TimeMode, { label: string; desc: string }> = {
-  60: { label: '60 MIN', desc: 'Full session — all 22 slides' },
+  60: { label: '60 MIN', desc: 'Full session - all 22 slides' },
   45: { label: '45 MIN', desc: 'Skip deeper optional slides' },
-  30: { label: '30 MIN', desc: 'Executive overview — core only' },
+  30: { label: '30 MIN', desc: 'Executive overview - core only' },
 };
 
 export default function HomeScreen({ onStart, timeMode, setTimeMode, theme, onToggleTheme }: HomeScreenProps) {

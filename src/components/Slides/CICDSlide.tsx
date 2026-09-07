@@ -19,7 +19,7 @@ export default function CICDSlide({ slide }: Props) {
     <SlideWrapper slide={slide}>
       <h2 style={{ fontSize: 'clamp(20px, 3.5vw, 38px)', fontWeight: 800, color: 'var(--text-primary)', marginBottom: 8 }}>{slide.title}</h2>
       <p style={{ fontSize: 15, color: 'var(--text-secondary)', marginBottom: 32 }}>
-        CI/CD automates the journey from code change to deployed software — removing human error from repetitive steps.
+        CI/CD automates the journey from code change to deployed software - removing human error from repetitive steps.
       </p>
 
       <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap', alignItems: 'flex-start' }}>
@@ -59,13 +59,13 @@ export default function CICDSlide({ slide }: Props) {
         <div style={{ flex: 1, minWidth: 240, display: 'flex', flexDirection: 'column', gap: 16 }}>
           {[
             {
-              label: 'CI — Continuous Integration',
+              label: 'CI - Continuous Integration',
               color: '#58a6ff',
               question: '"Does this new code integrate successfully with the project?"',
-              points: ['Automatically triggered on every push', 'Runs build + tests', 'Fails fast — prevents broken code from proceeding'],
+              points: ['Automatically triggered on every push', 'Runs build + tests', 'Fails fast - prevents broken code from proceeding'],
             },
             {
-              label: 'CD — Continuous Delivery/Deployment',
+              label: 'CD - Continuous Delivery/Deployment',
               color: '#3fb950',
               question: '"Can this validated code move safely toward production?"',
               points: ['Automates deployment after successful CI', 'Consistent, repeatable releases', 'Reduces risk of manual deployment errors'],

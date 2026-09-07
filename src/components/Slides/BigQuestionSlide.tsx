@@ -117,7 +117,7 @@ export default function BigQuestionSlide({ slide }: Props) {
               style={{ overflow: 'hidden' }}
             >
               <div style={{ padding: '16px', background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 8, marginTop: 8, fontSize: 14, color: 'var(--text-secondary)', lineHeight: 1.7 }}>
-                Every software project follows some version of this journey, even if the tools differ. Understanding these steps helps every team member — not just developers — know where a project is, why something is delayed, and where to look when something goes wrong. The journey is the foundation of everything we'll cover today.
+                Every software project follows some version of this journey, even if the tools differ. Understanding these steps helps every team member - not just developers - know where a project is, why something is delayed, and where to look when something goes wrong. The journey is the foundation of everything we'll cover today.
               </div>
             </motion.div>
           )}

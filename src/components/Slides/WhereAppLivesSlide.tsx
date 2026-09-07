@@ -12,7 +12,7 @@ export default function WhereAppLivesSlide({ slide }: Props) {
   return (
     <SlideWrapper slide={slide}>
       <h2 style={{ fontSize: 'clamp(22px, 4vw, 44px)', fontWeight: 900, color: 'var(--text-primary)', marginBottom: 8, letterSpacing: -1 }}>{slide.title}</h2>
-      <p style={{ fontSize: 15, color: 'var(--text-secondary)', marginBottom: 32 }}>A server is another computer — usually running 24/7 in a data centre.</p>
+      <p style={{ fontSize: 15, color: 'var(--text-secondary)', marginBottom: 32 }}>A server is another computer - usually running 24/7 in a data centre.</p>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 32, maxWidth: 700 }}>
         {/* Laptop */}
@@ -76,7 +76,7 @@ export default function WhereAppLivesSlide({ slide }: Props) {
       >
         <span style={{ fontSize: 18, marginRight: 10 }}>⚠️</span>
         <span style={{ fontSize: 14, color: 'var(--text-secondary)', fontWeight: 500 }}>
-          "It works on my machine" is not a solution — code must travel from the laptop to the server in a controlled, repeatable way.
+          "It works on my machine" is not a solution - code must travel from the laptop to the server in a controlled, repeatable way.
         </span>
       </motion.div>
     </SlideWrapper>

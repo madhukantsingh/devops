@@ -276,7 +276,6 @@ function App() {
             background: 'var(--bg-secondary)',
             borderTop: '1px solid var(--border)',
             padding: '8px 12px',
-            paddingRight: 'clamp(12px, 15vw, 150px)', // Ensures "Next" button avoids Netlify badge
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -312,10 +311,7 @@ function App() {
             <div style={{ fontSize: 12, color: 'var(--text-secondary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
               {current.title.length > 50 ? current.title.slice(0, 50) + '…' : current.title}
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4, marginTop: 2 }}>
-              <Clock size={10} style={{ color: 'var(--text-muted)' }} />
-              <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>{current.duration} min</span>
-            </div>
+
           </div>
 
           <button

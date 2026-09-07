@@ -281,10 +281,10 @@ export default function PipelineSlide({ slide }: Props) {
               >
                 <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--error)', marginBottom: 6, display: 'flex', alignItems: 'center', gap: 6 }}>
                   <XCircle size={14} />
-                  Pipeline failed — deployment stopped
+                  Pipeline failed - deployment stopped
                 </div>
                 <p style={{ fontSize: 12, color: 'var(--text-secondary)', marginBottom: 10 }}>
-                  Deployment was paused because validation failed. This is intentional — bad code was prevented from reaching production.
+                  Deployment was paused because validation failed. This is intentional - bad code was prevented from reaching production.
                 </p>
                 <button
                   onClick={() => setShowLogs(true)}
@@ -296,7 +296,7 @@ export default function PipelineSlide({ slide }: Props) {
                   {showLogs && (
                     <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} style={{ overflow: 'hidden', marginTop: 10 }}>
                       <pre style={{ fontFamily: 'monospace', fontSize: 11, color: 'var(--error)', background: 'var(--bg-primary)', padding: 10, borderRadius: 6, lineHeight: 1.6 }}>
-{`[SIMULATED LOG]
+                        {`[SIMULATED LOG]
 ● Running test suite...
   ✓ auth.login (passing)
   ✓ auth.register (passing)
@@ -306,7 +306,7 @@ export default function PipelineSlide({ slide }: Props) {
 
 Test Suites: 1 failed
 Tests:       1 failed, 2 passed
-FAIL — exiting with code 1`}
+FAIL - exiting with code 1`}
                       </pre>
                     </motion.div>
                   )}
@@ -325,7 +325,7 @@ FAIL — exiting with code 1`}
               >
                 <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--success)', display: 'flex', alignItems: 'center', gap: 6 }}>
                   <CheckCircle size={14} />
-                  Pipeline succeeded — deployment complete ✓
+                  Pipeline succeeded - deployment complete ✓
                 </div>
               </motion.div>
             )}

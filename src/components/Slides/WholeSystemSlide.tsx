@@ -33,7 +33,7 @@ export default function WholeSystemSlide({ slide }: Props) {
   return (
     <SlideWrapper slide={slide}>
       <h2 style={{ fontSize: 'clamp(20px, 3.5vw, 38px)', fontWeight: 800, color: 'var(--text-primary)', marginBottom: 8 }}>{slide.title}</h2>
-      <p style={{ fontSize: 14, color: 'var(--text-secondary)', marginBottom: 24 }}>The complete journey from business to customer — and where to look when it breaks.</p>
+      <p style={{ fontSize: 14, color: 'var(--text-secondary)', marginBottom: 24 }}>The complete journey from business to customer - and where to look when it breaks.</p>
 
       <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap', alignItems: 'flex-start' }}>
         {/* Main system flow */}

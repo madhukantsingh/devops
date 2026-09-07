@@ -123,7 +123,7 @@ export default function DeploymentWalkthroughSlide({ slide }: Props) {
           style={{ marginTop: 16, background: 'var(--success-dim)', border: '1px solid var(--success)', borderRadius: 10, padding: '12px 18px', textAlign: 'center' }}
         >
           <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--success)' }}>
-            ✅ Deployment complete — customer sees the new version
+            ✅ Deployment complete - customer sees the new version
           </div>
           <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 4 }}>
             Deployment is a chain of controlled steps, not one magic button.

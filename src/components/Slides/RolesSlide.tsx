@@ -67,7 +67,7 @@ const roles = [
     desc: 'Uses the final product.',
     color: '#56d364',
     journeyPosition: 6,
-    detail: 'Provides feedback through usage patterns, support requests, and explicit feedback — which feeds back into the next business requirement.',
+    detail: 'Provides feedback through usage patterns, support requests, and explicit feedback - which feeds back into the next business requirement.',
   },
 ];
 

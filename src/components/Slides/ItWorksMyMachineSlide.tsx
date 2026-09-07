@@ -75,7 +75,7 @@ export default function ItWorksMyMachineSlide({ slide }: Props) {
         <div>
           <div style={{ fontSize: 14, fontWeight: 700, color: '#3fb950', marginBottom: 4 }}>The solution: Docker</div>
           <div style={{ fontSize: 13, color: 'var(--text-secondary)' }}>
-            Package the application together with its exact runtime environment — Node version, libraries, configuration — so it runs identically everywhere.
+            Package the application together with its exact runtime environment - Node version, libraries, configuration - so it runs identically everywhere.
           </div>
         </div>
       </motion.div>
