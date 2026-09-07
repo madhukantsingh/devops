@@ -276,6 +276,7 @@ function App() {
             background: 'var(--bg-secondary)',
             borderTop: '1px solid var(--border)',
             padding: '8px 12px',
+            paddingRight: 'clamp(12px, 15vw, 150px)', // Ensures "Next" button avoids Netlify badge
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
