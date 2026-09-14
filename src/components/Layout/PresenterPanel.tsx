@@ -76,9 +76,6 @@ export default function PresenterPanel({
           <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginTop: 4 }}>
             <Clock size={10} style={{ color: 'var(--text-muted)' }} />
             <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>{next.duration} min</span>
-            {next.label === 'OPTIONAL' && (
-              <span style={{ fontSize: 9, background: 'var(--warning-dim)', color: 'var(--warning)', borderRadius: 4, padding: '1px 5px', fontWeight: 700 }}>OPTIONAL</span>
-            )}
           </div>
         </div>
       )}

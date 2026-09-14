@@ -176,11 +176,6 @@ function App() {
             <span style={{ color: 'var(--text-secondary)', fontSize: 12, whiteSpace: 'nowrap' }}>
               {currentIndex + 1}/{total}
             </span>
-            {current.label === 'OPTIONAL' && (
-              <span style={{ background: 'var(--warning-dim)', color: 'var(--warning)', border: '1px solid rgba(210,153,34,0.3)', borderRadius: 5, padding: '1px 6px', fontSize: 9, fontWeight: 700, letterSpacing: 1 }}>
-                OPT
-              </span>
-            )}
           </div>
 
           {/* Center: progress bar */}
@@ -339,71 +334,95 @@ function App() {
         </div>
 
         {/* ── Slide Navigator Modal ──────────────────────────────── */}
+        {/* ── Slide Navigator Modal ──────────────────────────────── */}
         <AnimatePresence>
           {navigatorOpen && (
-            <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setNavigatorOpen(false)}
+              style={{
+                position: 'fixed',
+                inset: 0,
+                background: 'rgba(0,0,0,0.65)',
+                backdropFilter: 'blur(6px)',
+                zIndex: 50,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: 16,
+              }}
+            >
               <motion.div
-                initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                onClick={() => setNavigatorOpen(false)}
-                style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', zIndex: 40 }}
-              />
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 10 }}
+                onClick={(e) => e.stopPropagation()}
                 style={{
-                  position: 'fixed',
-                  top: '50%', left: '50%',
-                  transform: 'translate(-50%,-50%)',
-                  zIndex: 50,
-                  width: 'min(95vw, 860px)',
-                  maxHeight: '80vh',
-                  display: 'flex', flexDirection: 'column',
+                  width: 'min(100%, 860px)',
+                  maxHeight: '85vh',
+                  display: 'flex',
+                  flexDirection: 'column',
                   background: 'var(--bg-secondary)',
                   border: '1px solid var(--border)',
                   borderRadius: 16,
                   overflow: 'hidden',
+                  boxShadow: '0 24px 48px var(--shadow)',
                 }}
               >
-                <div style={{ padding: '14px 18px', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <h3 style={{ fontWeight: 700, fontSize: 15 }}>Slide Navigator</h3>
-                  <button onClick={() => setNavigatorOpen(false)} style={{ background: 'none', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer' }}><X size={18} /></button>
+                <div style={{ padding: '14px 20px', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'var(--bg-card)' }}>
+                  <h3 style={{ fontWeight: 800, fontSize: 16, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <Grid size={18} style={{ color: 'var(--accent)' }} /> Slide Navigator ({activeSlides.length} slides)
+                  </h3>
+                  <button onClick={() => setNavigatorOpen(false)} style={{ background: 'transparent', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer', padding: 4 }}>
+                    <X size={18} />
+                  </button>
                 </div>
-                <div className="overflow-y-auto scrollable flex-1 p-4" style={{ padding: 16 }}>
+                <div className="scrollable" style={{ padding: 20, overflowY: 'auto', flex: 1 }}>
                   <SlideNavigator slides={activeSlides} currentIndex={currentIndex} onGoTo={goTo} />
                 </div>
               </motion.div>
-            </>
+            </motion.div>
           )}
         </AnimatePresence>
 
         {/* ── Keyboard Shortcuts Modal ────────────────────────────── */}
         <AnimatePresence>
           {shortcutsOpen && (
-            <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShortcutsOpen(false)}
+              style={{
+                position: 'fixed',
+                inset: 0,
+                background: 'rgba(0,0,0,0.65)',
+                backdropFilter: 'blur(6px)',
+                zIndex: 50,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: 16,
+              }}
+            >
               <motion.div
-                initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                onClick={() => setShortcutsOpen(false)}
-                style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', zIndex: 40 }}
-              />
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 10 }}
+                onClick={(e) => e.stopPropagation()}
                 style={{
-                  position: 'fixed',
-                  top: '50%', left: '50%',
-                  transform: 'translate(-50%,-50%)',
-                  zIndex: 50,
-                  width: 'min(90vw, 360px)',
+                  width: 'min(100%, 400px)',
                   background: 'var(--bg-secondary)',
                   border: '1px solid var(--border)',
                   borderRadius: 16,
                   padding: 22,
+                  boxShadow: '0 24px 48px var(--shadow)',
                 }}
               >
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 14 }}>
-                  <h3 style={{ fontWeight: 700, fontSize: 15 }}>Keyboard Shortcuts</h3>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+                  <h3 style={{ fontWeight: 800, fontSize: 16, color: 'var(--text-primary)' }}>Keyboard Shortcuts</h3>
                   <button onClick={() => setShortcutsOpen(false)} style={{ background: 'none', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer' }}><X size={18} /></button>
                 </div>
                 {[
@@ -417,13 +436,13 @@ function App() {
                   ['?', 'Keyboard shortcuts'],
                   ['Esc', 'Close modals'],
                 ].map(([key, desc]) => (
-                  <div key={key} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '6px 0', borderBottom: '1px solid var(--border-subtle)' }}>
-                    <kbd style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 4, padding: '2px 8px', fontSize: 12, fontFamily: 'monospace', color: 'var(--accent)' }}>{key}</kbd>
-                    <span style={{ fontSize: 13, color: 'var(--text-secondary)' }}>{desc}</span>
+                  <div key={key} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 0', borderBottom: '1px solid var(--border-subtle)' }}>
+                    <kbd style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 6, padding: '3px 8px', fontSize: 12, fontFamily: 'monospace', color: 'var(--accent)', fontWeight: 700 }}>{key}</kbd>
+                    <span style={{ fontSize: 13, color: 'var(--text-primary)', fontWeight: 500 }}>{desc}</span>
                   </div>
                 ))}
               </motion.div>
-            </>
+            </motion.div>
           )}
         </AnimatePresence>
       </div>

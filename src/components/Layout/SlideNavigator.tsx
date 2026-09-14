@@ -63,21 +63,6 @@ export default function SlideNavigator({ slides, currentIndex, onGoTo }: SlideNa
                       >
                         #{slide.id}
                       </span>
-                      {slide.label === 'OPTIONAL' && (
-                        <span
-                          style={{
-                            fontSize: 9,
-                            fontWeight: 700,
-                            background: 'var(--warning-dim)',
-                            color: 'var(--warning)',
-                            borderRadius: 4,
-                            padding: '1px 5px',
-                            letterSpacing: 0.5,
-                          }}
-                        >
-                          OPT
-                        </span>
-                      )}
                     </div>
                     <div
                       style={{

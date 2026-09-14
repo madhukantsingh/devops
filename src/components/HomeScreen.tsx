@@ -203,7 +203,7 @@ export default function HomeScreen({ onStart, timeMode, setTimeMode, theme, onTo
           <div style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-secondary)', marginBottom: 10 }}>Includes</div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
             {[
-              '22 interactive slides',
+              `${slides.length} interactive meeting slides`,
               'Keyboard navigation',
               'Presenter mode',
               'Speaker notes',
