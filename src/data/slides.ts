@@ -22,7 +22,6 @@ export type SlideType =
   | 'git-pull-request'
   | 'git-merge-rebase-details'
   | 'git-stash-pop'
-  | 'git-cherry-pick'
   | 'git-reset-details'
   | 'git-reflog-slide'
   | 'git-conflict'
@@ -211,7 +210,7 @@ const rawSlides: SlideData[] = [
     skipIfShortOnTime: false,
     takeaway: 'Git attaches your user name and email to every single commit for team auditability.',
     notes: [
-      'Explain global (~/.gitconfig) vs local (.git/config) vs system configuration.',
+      'Explain global (~/.gitconfig) vs local (.git/config) configuration.',
       'Show how git config --global user.name and user.email assign identity.',
       'Explain init.defaultBranch main and core.editor.',
       'Show git config --list to view active configuration settings.',
@@ -405,9 +404,10 @@ const rawSlides: SlideData[] = [
     optional: false,
     label: 'CORE',
     skipIfShortOnTime: false,
-    takeaway: 'Every feature travels through: branch → commits → push → PR → review → merge.',
+    takeaway: 'Every feature travels through: branch → commits → pull latest → push → PR → review → merge.',
     notes: [
       'Click each step so the audience can follow the flow.',
+      'Always pull latest main before pushing to avoid conflicts.',
       'Code never goes directly to main without review.',
       'The branch protects main from half-finished work.',
     ],
@@ -471,25 +471,6 @@ const rawSlides: SlideData[] = [
       'git stash list, git stash apply, git stash drop.',
     ],
     type: 'git-stash-pop',
-  },
-  {
-    id: 20,
-    slug: 'git-cherry-pick',
-    section: 'Git & Source Control',
-    sectionNumber: 2,
-    title: 'Git Cherry-Pick: Selectively Copying Commits',
-    subtitle: 'Applying individual commits from one branch onto another',
-    duration: 3,
-    optional: false,
-    label: 'CORE',
-    skipIfShortOnTime: false,
-    takeaway: 'Cherry-pick lets you pick specific commits without merging an entire branch.',
-    notes: [
-      'git cherry-pick <commit-hash> applies a specific commit onto current HEAD.',
-      'Use case: Extracting a critical bugfix commit from a feature branch into main.',
-      'Step-by-step interactive pick demonstration.',
-    ],
-    type: 'git-cherry-pick',
   },
   {
     id: 21,

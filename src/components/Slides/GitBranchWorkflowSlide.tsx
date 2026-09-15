@@ -27,8 +27,18 @@ const workflowSteps = [
     who: 'Developer',
   },
   {
-    id: 'push',
+    id: 'pull',
     step: '3',
+    label: 'Pull Latest',
+    command: 'git pull origin main',
+    color: '#3fb950',
+    icon: '📥',
+    explanation: 'Fetch and merge the latest changes from origin/main into your feature branch before pushing. This prevents push rejections and resolves merge conflicts locally!',
+    who: 'Developer',
+  },
+  {
+    id: 'push',
+    step: '4',
     label: 'Push to GitHub',
     command: 'git push origin feature/login',
     color: '#ffa657',
@@ -38,7 +48,7 @@ const workflowSteps = [
   },
   {
     id: 'pr',
-    step: '4',
+    step: '5',
     label: 'Open Pull Request',
     command: 'GitHub UI → New Pull Request',
     color: '#d29922',
@@ -48,7 +58,7 @@ const workflowSteps = [
   },
   {
     id: 'review',
-    step: '5',
+    step: '6',
     label: 'Code Review',
     command: 'Review on GitHub',
     color: '#3fb950',
@@ -58,7 +68,7 @@ const workflowSteps = [
   },
   {
     id: 'checks',
-    step: '6',
+    step: '7',
     label: 'Automated Checks',
     command: 'CI/CD pipeline runs',
     color: '#56d364',
@@ -68,7 +78,7 @@ const workflowSteps = [
   },
   {
     id: 'merge',
-    step: '7',
+    step: '8',
     label: 'Merge',
     command: 'Merge on GitHub',
     color: '#58a6ff',

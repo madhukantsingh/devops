@@ -7,7 +7,7 @@ import { Settings, User, Mail, GitBranch, Terminal, Shield, Check, Copy } from '
 interface Props { slide: SlideData; }
 
 export default function GitConfigSlide({ slide }: Props) {
-  const [activeTab, setActiveTab] = useState<'global' | 'local' | 'system'>('global');
+  const [activeTab, setActiveTab] = useState<'global' | 'local'>('global');
   const [userName, setUserName] = useState('Alex Rivera');
   const [userEmail, setUserEmail] = useState('alex@company.com');
   const [defaultBranch, setDefaultBranch] = useState('main');
@@ -20,11 +20,8 @@ git config --global user.email "${userEmail}"
 git config --global init.defaultBranch "${defaultBranch}"
 git config --global core.editor "code --wait"`;
     }
-    if (activeTab === 'local') {
-      return `git config --local user.name "${userName} (Work)"
+    return `git config --local user.name "${userName} (Work)"
 git config --local user.email "alex.r@enterprise.com"`;
-    }
-    return `git config --system core.autocrlf true`;
   };
 
   const handleCopy = () => {
@@ -42,12 +39,11 @@ git config --local user.email "alex.r@enterprise.com"`;
         Before making commits, Git needs to know who you are and how your workspace should behave.
       </p>
 
-      {/* 3 Scope Selector */}
+      {/* 2 Scope Selector */}
       <div style={{ display: 'flex', gap: 10, marginBottom: 16 }}>
         {[
           { id: 'global', name: 'Global Scope', desc: 'Applied to ALL projects on your computer (~/.gitconfig)', color: 'var(--accent)' },
           { id: 'local', name: 'Local Scope', desc: 'Specific to ONE repository only (.git/config)', color: 'var(--success)' },
-          { id: 'system', name: 'System Scope', desc: 'Applied to ALL users on this machine (/etc/gitconfig)', color: 'var(--warning)' },
         ].map((scope) => {
           const isActive = activeTab === scope.id;
           return (

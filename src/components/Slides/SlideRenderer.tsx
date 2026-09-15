@@ -23,7 +23,6 @@ import GitBranchWorkflowSlide from './GitBranchWorkflowSlide';
 import GitPullRequestSlide from './GitPullRequestSlide';
 import GitMergeRebaseSlide from './GitMergeRebaseSlide';
 import GitStashSlide from './GitStashSlide';
-import GitCherryPickSlide from './GitCherryPickSlide';
 import GitResetDetailsSlide from './GitResetDetailsSlide';
 import GitReflogSlide from './GitReflogSlide';
 import GitConflictSlide from './GitConflictSlide';
@@ -85,7 +84,6 @@ export default function SlideRenderer({ slide }: Props) {
     case 'git-pull-request': return <GitPullRequestSlide slide={slide} />;
     case 'git-merge-rebase-details': return <GitMergeRebaseSlide slide={slide} />;
     case 'git-stash-pop': return <GitStashSlide slide={slide} />;
-    case 'git-cherry-pick': return <GitCherryPickSlide slide={slide} />;
     case 'git-reset-details': return <GitResetDetailsSlide slide={slide} />;
     case 'git-reflog-slide': return <GitReflogSlide slide={slide} />;
     case 'git-conflict': return <GitConflictSlide slide={slide} />;

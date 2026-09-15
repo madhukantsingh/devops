@@ -60,24 +60,6 @@ const mistakes = [
     why: 'Resolving incorrectly can silently remove someone else\'s work or introduce bugs.',
     better: 'Read both conflicting versions. Understand the intent. Combine or choose deliberately. Run tests after resolving.',
   },
-  {
-    id: 'm7',
-    icon: '🙈',
-    title: 'Pushing without reviewing',
-    color: '#d29922',
-    problem: 'Pushing code without running git status or git diff to see exactly what is being sent.',
-    why: 'You might push debug code, console.logs, temporary changes, or files that weren\'t meant to be committed.',
-    better: 'Before every push: git diff --staged to review what is committed. git status to confirm what is staged.',
-  },
-  {
-    id: 'm8',
-    icon: '🚀',
-    title: 'Assuming GitHub = production',
-    color: '#bc8cff',
-    problem: 'Thinking that pushing to GitHub automatically updates the live application.',
-    why: 'GitHub is a remote repository, not a deployment service. Code reaching GitHub still needs CI/CD to build, test, and deploy it.',
-    better: 'Understand the full chain: push → CI/CD → build → test → deploy. Check pipeline results after pushing.',
-  },
 ];
 
 export default function GitMistakesSlide({ slide }: Props) {
