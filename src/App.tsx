@@ -20,6 +20,7 @@ function App() {
   const [theme, setTheme] = useState<Theme>('dark');
   const [started, setStarted] = useState(false);
   const [timeMode, setTimeMode] = useState<TimeMode>(60);
+  const [activeSlideSet, setActiveSlideSet] = useState<SlideData[]>(slides);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(1);
   const [presenterMode, setPresenterMode] = useState(false);
@@ -29,7 +30,7 @@ function App() {
   const [elapsed, setElapsed] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const activeSlides: SlideData[] = getSlidesForMode(timeMode);
+  const activeSlides: SlideData[] = activeSlideSet;
   const current = activeSlides[currentIndex];
   const total = activeSlides.length;
 
@@ -96,10 +97,12 @@ function App() {
     return (
       <ThemeContext.Provider value={theme}>
         <HomeScreen
-          onStart={() => setStarted(true)}
-          timeMode={timeMode}
-          setTimeMode={setTimeMode}
-          slides={slides}
+          onStart={(filtered) => {
+            setActiveSlideSet(filtered);
+            setCurrentIndex(0);
+            setElapsed(0);
+            setStarted(true);
+          }}
           theme={theme}
           onToggleTheme={toggleTheme}
         />

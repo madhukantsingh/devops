@@ -29,6 +29,7 @@ export type SlideType =
   | 'git-ignore'
   | 'git-actions'
   | 'git-mistakes'
+  | 'git-secrets-leak'
   | 'git-troubleshoot'
   | 'git-journey'
   | 'git-github-ui'
@@ -570,6 +571,28 @@ const rawSlides: SlideData[] = [
     type: 'git-mistakes',
   },
   {
+    id: 27,
+    slug: 'git-secrets-leak',
+    section: 'Git & Source Control',
+    sectionNumber: 2,
+    title: '🚨 Oops! I Pushed .env to GitHub',
+    subtitle: 'The complete recovery playbook — step by step',
+    duration: 4,
+    optional: false,
+    label: 'CORE',
+    skipIfShortOnTime: false,
+    takeaway: 'Rotate credentials first. Then rewrite history with git filter-repo. Then force push, purge GitHub cache, fix the server.',
+    notes: [
+      'Step 0: Rotate the secret immediately — assume it is already compromised.',
+      'Step 1–2: git filter-repo removes the file from every commit in history.',
+      'Step 3: Force push replaces GitHub history — warn teammates to re-clone.',
+      'Step 4: GitHub may cache old commits — request a purge via GitHub Support.',
+      'Step 5: Update .env on EC2 with new credentials and restart Docker.',
+      'Prevention: .gitignore must be first commit. Add a pre-commit hook.',
+    ],
+    type: 'git-secrets-leak',
+  },
+  {
     id: 28,
     slug: 'git-to-cicd',
     section: 'Git & Source Control',
@@ -896,4 +919,103 @@ export const sections = [
 
 export function getSlidesForMode(mode?: number): SlideData[] {
   return slides;
+}
+
+// ── Audience types ─────────────────────────────────────────────────────────
+export type AudienceType = 'non-technical' | 'mixed' | 'technical' | 'developers';
+
+export interface AudienceProfile {
+  id: AudienceType;
+  label: string;
+  icon: string;
+  description: string;
+  color: string;
+  // Slide types to SKIP for this audience (too technical or irrelevant)
+  skipTypes: SlideType[];
+  // Extra label: what the audience cares about
+  focus: string;
+}
+
+export const audienceProfiles: AudienceProfile[] = [
+  {
+    id: 'non-technical',
+    label: 'Non-Technical',
+    icon: '👔',
+    description: 'Managers, product owners, stakeholders',
+    color: '#d29922',
+    focus: 'Concepts & big picture only',
+    skipTypes: [
+      'git-simulator', 'git-diff', 'git-log', 'git-remotes', 'git-areas',
+      'git-merge-rebase-details', 'git-stash-pop', 'git-reset-details',
+      'git-reflog-slide', 'git-conflict', 'git-history-revert',
+      'git-actions', 'git-troubleshoot', 'git-secrets-leak',
+      'git-branch-workflow', 'git-pull-request',
+      'pipeline', 'docker', 'http-errors', 'where-do-i-look',
+      'failure-scenario', 'git-vocabulary',
+    ],
+  },
+  {
+    id: 'mixed',
+    label: 'Mixed Audience',
+    icon: '👥',
+    description: 'Mix of technical and non-technical people',
+    color: '#58a6ff',
+    focus: 'Balanced: concepts + key workflows',
+    skipTypes: [
+      'git-simulator', 'git-diff', 'git-merge-rebase-details',
+      'git-stash-pop', 'git-reset-details', 'git-reflog-slide',
+      'git-history-revert', 'git-actions', 'git-troubleshoot',
+      'git-vocabulary', 'failure-scenario',
+    ],
+  },
+  {
+    id: 'technical',
+    label: 'Technical Team',
+    icon: '💻',
+    description: 'Engineers, testers, DevOps — knows code basics',
+    color: '#3fb950',
+    focus: 'Full workflow + real commands',
+    skipTypes: [
+      'git-before', 'git-what-is', 'git-vs-github',
+    ],
+  },
+  {
+    id: 'developers',
+    label: 'Developers Only',
+    icon: '🧑‍💻',
+    description: 'Software developers — already know Git basics',
+    color: '#bc8cff',
+    focus: 'Deep dive: advanced Git + DevOps pipeline',
+    skipTypes: [
+      'git-before', 'git-what-is', 'git-vs-github', 'git-repository',
+      'git-config', 'git-auth', 'git-areas', 'git-commit-slide',
+      'git-branches',
+    ],
+  },
+];
+
+export const timeBudgets = [30, 45, 60, 90] as const;
+export type TimeBudget = typeof timeBudgets[number];
+
+export function getSlidesForAudience(
+  audience: AudienceType,
+  budget: TimeBudget
+): SlideData[] {
+  const profile = audienceProfiles.find((p) => p.id === audience)!;
+
+  // Filter out audience-inappropriate slides
+  let filtered = slides.filter((s) => !profile.skipTypes.includes(s.type));
+
+  // Sort by importance — never skip CORE unless truly over budget
+  const totalTime = filtered.reduce((a, s) => a + s.duration, 0);
+
+  if (totalTime <= budget) return filtered;
+
+  // Need to trim — remove skipIfShortOnTime first, then OPTIONAL
+  const pass1 = filtered.filter((s) => !s.skipIfShortOnTime);
+  const t1 = pass1.reduce((a, s) => a + s.duration, 0);
+  if (t1 <= budget) return pass1;
+
+  const pass2 = pass1.filter((s) => s.label === 'CORE');
+  return pass2;
 }

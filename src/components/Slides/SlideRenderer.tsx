@@ -29,6 +29,7 @@ import GitConflictSlide from './GitConflictSlide';
 import GitIgnoreSlide from './GitIgnoreSlide';
 import GitActionsSlide from './GitActionsSlide';
 import GitMistakesSlide from './GitMistakesSlide';
+import SecretsLeakSlide from './SecretsLeakSlide';
 import GitTroubleshootSlide from './GitTroubleshootSlide';
 import GitJourneySlide from './GitJourneySlide';
 import GitHubUISlide from './GitHubUISlide';
@@ -91,6 +92,7 @@ export default function SlideRenderer({ slide }: Props) {
     case 'git-ignore': return <GitIgnoreSlide slide={slide} />;
     case 'git-actions': return <GitActionsSlide slide={slide} />;
     case 'git-mistakes': return <GitMistakesSlide slide={slide} />;
+    case 'git-secrets-leak': return <SecretsLeakSlide slide={slide} />;
     case 'git-troubleshoot': return <GitTroubleshootSlide slide={slide} />;
     case 'git-journey': return <GitJourneySlide slide={slide} />;
     case 'git-github-ui': return <GitHubUISlide slide={slide} />;
