@@ -1,4 +1,4 @@
-﻿import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
 interface TrailerIntroProps {
   onDone: () => void;
@@ -22,6 +22,20 @@ export default function TrailerIntro({ onDone }: TrailerIntroProps) {
   };
 
   useEffect(() => () => { if (timerRef.current) clearTimeout(timerRef.current); }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'f' || e.key === 'F') {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen?.().catch(() => {});
+        } else {
+          document.exitFullscreen?.().catch(() => {});
+        }
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   useEffect(() => {
     const v = videoRef.current;
@@ -74,7 +88,7 @@ export default function TrailerIntro({ onDone }: TrailerIntroProps) {
       >
         <video
           ref={videoRef}
-          src="/trailer.mp4"
+          src="/trailer.mp4?v=2"
           preload="metadata"
           playsInline
           style={S.video}
@@ -166,11 +180,12 @@ const S: Record<string, React.CSSProperties> = {
     overflow: 'hidden',
   },
 
-  /* Video: contain = never cropped, full native aspect ratio */
+  /* Video: cover = fills full screen, centered — works for both portrait & landscape */
   video: {
     width: '100%',
     height: '100%',
-    objectFit: 'contain',   /* ← KEY: shows exact video frame, no crop */
+    objectFit: 'cover',
+    objectPosition: 'center center',
     display: 'block',
   },
 

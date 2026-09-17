@@ -7,4 +7,13 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  server: {
+    watch: {
+      // Exclude the data/ folder — large video/audio files cause EBUSY on Windows
+      ignored: [
+        `${import.meta.dirname}/data/**`,
+      ],
+    },
+  },
 })
+
