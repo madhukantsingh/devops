@@ -52,9 +52,9 @@ const areas: {
     label: 'Remote Repository',
     icon: '☁️',
     color: '#3fb950',
-    command: 'git push',
+    command: 'git pull origin main → git push',
     description: 'The shared copy of the repository hosted on GitHub, accessible by the whole team.',
-    whatHappens: 'You run "git push" and your local commits travel to GitHub. Now your teammates can see them, and CI/CD can trigger.',
+    whatHappens: 'Always run "git pull" first to integrate remote changes, then run "git push" to send your local commits to GitHub.',
     example: 'After pushing, the commit appears in the GitHub repository. Your teammates can see it and begin a code review.',
   },
 ];

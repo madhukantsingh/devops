@@ -14,6 +14,7 @@ const journeySteps = [
   { id: 'staging', label: 'Staging Area', icon: '📋', color: '#d29922', desc: 'Change is selected for the next commit' },
   { id: 'commit', label: 'git commit', icon: '💾', color: '#58a6ff', desc: 'Permanent checkpoint created in local history' },
   { id: 'localrepo', label: 'Local Repository', icon: '🗄️', color: '#58a6ff', desc: 'Commit stored in .git/ folder with hash, author, message' },
+  { id: 'pull', label: 'git pull origin main', icon: '📥', color: '#e3b341', desc: 'Pull latest changes from main branch into local repository to prevent conflicts' },
   { id: 'push', label: 'git push', icon: '⬆️', color: '#bc8cff', desc: 'Commit travels from laptop to GitHub' },
   { id: 'github', label: 'GitHub Repository', icon: '🌐', color: '#bc8cff', desc: 'Team can see the commit. CI/CD may trigger.' },
   { id: 'pr', label: 'Pull Request', icon: '📋', color: '#3fb950', desc: 'Developer proposes to merge into main' },

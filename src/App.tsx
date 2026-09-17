@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef, createContext, useContext } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { slides, getSlidesForMode, SlideData } from './data/slides';
+import TrailerIntro from './components/TrailerIntro';
 import HomeScreen from './components/HomeScreen';
 import ProgressBar from './components/Layout/ProgressBar';
 import SlideNavigator from './components/Layout/SlideNavigator';
@@ -18,6 +19,7 @@ export const useTheme = () => useContext(ThemeContext);
 
 function App() {
   const [theme, setTheme] = useState<Theme>('dark');
+  const [trailerDone, setTrailerDone] = useState(false);
   const [started, setStarted] = useState(false);
   const [timeMode, setTimeMode] = useState<TimeMode>(60);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -91,6 +93,14 @@ function App() {
   }, [started, goNext, goPrev, goTo, total]);
 
   const isDark = theme === 'dark';
+
+  if (!trailerDone) {
+    return (
+      <ThemeContext.Provider value={theme}>
+        <TrailerIntro onDone={() => setTrailerDone(true)} />
+      </ThemeContext.Provider>
+    );
+  }
 
   if (!started) {
     return (

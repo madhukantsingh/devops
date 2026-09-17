@@ -27,12 +27,6 @@ const views = [
     cmd: 'git log --oneline',
     plain: 'Same history, but squeezed to one line per save. Perfect for getting a quick overview — like scanning headlines in a newspaper instead of reading every article.',
   },
-  {
-    id: 'graph',
-    label: '🌿 Branch Graph',
-    cmd: 'git log --graph --oneline',
-    plain: 'Shows a visual tree of how different branches split off and came back together. Useful when multiple people are working in parallel — you can see whose work merged where.',
-  },
 ] as const;
 
 type ViewId = typeof views[number]['id'];
@@ -161,26 +155,6 @@ export default function GitLogSlide({ slide }: Props) {
                         }}>({t})</span>
                       ))}
                       <span style={{ color: 'var(--code-text)' }}>{c.message}</span>
-                    </div>
-                  )}
-
-                  {/* ── GRAPH ── */}
-                  {active === 'graph' && (
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                      <span style={{
-                        color: i === 0 ? '#3fb950' : i % 2 === 0 ? '#3fb950' : '#a371f7',
-                        fontWeight: 900, flexShrink: 0, fontSize: 14,
-                      }}>
-                        {i === 0 ? '*' : i % 2 !== 0 ? '|  *' : '*  |'}
-                      </span>
-                      <span style={{ color: '#d29922', flexShrink: 0 }}>{c.hash}</span>
-                      {c.tags.map((t) => (
-                        <span key={t} style={{
-                          background: 'rgba(56,139,253,0.12)', color: '#79c0ff',
-                          padding: '1px 5px', borderRadius: 3, fontSize: 10,
-                        }}>({t})</span>
-                      ))}
-                      <span style={{ color: 'var(--code-text)', fontSize: 11 }}>{c.message}</span>
                     </div>
                   )}
 

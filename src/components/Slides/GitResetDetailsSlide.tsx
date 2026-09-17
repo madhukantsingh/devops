@@ -7,7 +7,7 @@ import { RotateCcw, AlertTriangle, CheckCircle, Flame, Layers, ShieldAlert } fro
 interface Props { slide: SlideData; }
 
 export default function GitResetDetailsSlide({ slide }: Props) {
-  const [resetMode, setResetMode] = useState<'soft' | 'mixed' | 'hard'>('soft');
+  const [resetMode, setResetMode] = useState<'soft' | 'hard'>('soft');
 
   const modeInfo = {
     soft: {
@@ -19,16 +19,6 @@ export default function GitResetDetailsSlide({ slide }: Props) {
       workingDir: 'KEPT (Working files untouched)',
       summary: 'Best for re-doing a commit message or grouping recent commits together before pushing.',
       color: 'var(--success)',
-    },
-    mixed: {
-      name: 'git reset --mixed HEAD~1 (DEFAULT)',
-      safety: 'SAFE',
-      safetyColor: 'var(--warning)',
-      headMove: 'Moves HEAD pointer back 1 commit',
-      stagingIndex: 'CLEARED (Files removed from staging)',
-      workingDir: 'KEPT (Changes remain in your working code)',
-      summary: 'Best when you want to unstage changes and carefully re-add selected files.',
-      color: 'var(--warning)',
     },
     hard: {
       name: 'git reset --hard HEAD~1',
@@ -50,15 +40,14 @@ export default function GitResetDetailsSlide({ slide }: Props) {
         {slide.title}
       </h2>
       <p style={{ fontSize: 13, color: 'var(--text-secondary)', marginBottom: 16 }}>
-        <code style={{ fontFamily: 'monospace', color: 'var(--accent)' }}>git reset</code> moves the branch pointer backward. The flag (<code style={{ color: 'var(--success)' }}>--soft</code>, <code style={{ color: 'var(--warning)' }}>--mixed</code>, or <code style={{ color: '#f85149' }}>--hard</code>) determines what happens to your files!
+        <code style={{ fontFamily: 'monospace', color: 'var(--accent)' }}>git reset</code> moves the branch pointer backward. The flag (<code style={{ color: 'var(--success)' }}>--soft</code> or <code style={{ color: '#f85149' }}>--hard</code>) determines what happens to your files!
       </p>
 
       {/* Mode Selector Buttons */}
       <div style={{ display: 'flex', gap: 10, marginBottom: 16 }}>
         {[
           { id: 'soft', label: '1. Soft Reset (--soft)', color: 'var(--success)' },
-          { id: 'mixed', label: '2. Mixed Reset (--mixed)', color: 'var(--warning)' },
-          { id: 'hard', label: '3. Hard Reset (--hard)', color: '#f85149' },
+          { id: 'hard', label: '2. Hard Reset (--hard)', color: '#f85149' },
         ].map((m) => {
           const isSel = resetMode === m.id;
           return (
@@ -112,8 +101,8 @@ export default function GitResetDetailsSlide({ slide }: Props) {
             <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 6 }}>
               STAGING INDEX (INDEX)
             </div>
-            <div style={{ fontSize: 12, fontWeight: 700, color: resetMode === 'soft' ? 'var(--success)' : resetMode === 'mixed' ? 'var(--warning)' : '#f85149' }}>
-              {resetMode === 'soft' ? '✅ STAGED' : resetMode === 'mixed' ? '⚠️ UNSTAGED' : '❌ WIPED'}
+            <div style={{ fontSize: 12, fontWeight: 700, color: resetMode === 'soft' ? 'var(--success)' : '#f85149' }}>
+              {resetMode === 'soft' ? '✅ STAGED' : '❌ WIPED'}
             </div>
           </div>
 

@@ -6,7 +6,7 @@ import { ChevronRight } from 'lucide-react';
 
 interface Props { slide: SlideData; }
 
-type Step = 'idle' | 'edit' | 'status' | 'add' | 'commit' | 'push';
+type Step = 'idle' | 'edit' | 'status' | 'add' | 'commit' | 'pull' | 'push';
 
 const steps: { id: Step; label: string; command?: string; color: string }[] = [
   { id: 'idle', label: 'Start', color: '#8b949e' },
@@ -14,10 +14,11 @@ const steps: { id: Step; label: string; command?: string; color: string }[] = [
   { id: 'status', label: 'git status', command: 'git status', color: '#d29922' },
   { id: 'add', label: 'git add', command: 'git add app.js', color: '#bc8cff' },
   { id: 'commit', label: 'git commit', command: 'git commit -m "Add login validation"', color: '#58a6ff' },
+  { id: 'pull', label: 'git pull', command: 'git pull origin main', color: '#e3b341' },
   { id: 'push', label: 'git push', command: 'git push', color: '#3fb950' },
 ];
 
-const stepOrder: Step[] = ['idle', 'edit', 'status', 'add', 'commit', 'push'];
+const stepOrder: Step[] = ['idle', 'edit', 'status', 'add', 'commit', 'pull', 'push'];
 
 const outputs: Record<Step, { title: string; content: string[]; area: string; areaColor: string }> = {
   idle: {
@@ -88,6 +89,20 @@ const outputs: Record<Step, { title: string; content: string[]; area: string; ar
     ],
     area: 'Local Repository',
     areaColor: '#58a6ff',
+  },
+  pull: {
+    title: '$ git pull origin main',
+    content: [
+      'From https://github.com/org/project',
+      ' * branch            main       -> FETCH_HEAD',
+      'Already up to date.',
+      '',
+      '  ✓ Pulled latest changes from main branch',
+      '  ✓ Local repository synchronized with remote',
+      '  ✓ Prevents push rejection & resolves conflicts early',
+    ],
+    area: 'Sync Remote with Local',
+    areaColor: '#e3b341',
   },
   push: {
     title: '$ git push',
@@ -229,6 +244,7 @@ export default function GitSimulatorSlide({ slide }: Props) {
             { label: 'Working Directory', color: '#ffa657', activeOn: ['idle', 'edit', 'status'] },
             { label: 'Staging Area', color: '#d29922', activeOn: ['add'] },
             { label: 'Local Repository', color: '#58a6ff', activeOn: ['commit'] },
+            { label: 'Remote Sync (git pull)', color: '#e3b341', activeOn: ['pull'] },
             { label: 'Remote (GitHub)', color: '#3fb950', activeOn: ['push'] },
           ].map((area) => {
             const isActive = area.activeOn.includes(step);
